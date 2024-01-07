@@ -224,6 +224,49 @@
     ]
   },
   {
+    "name": "zkSync Era Goerli Testnet (deprecated)",
+    "status": "deprecated",
+    "chain": "ETH",
+    "rpc": ["https://testnet.era.zksync.dev"],
+    "faucets": [],
+    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
+    "infoURL": "https://zksync.io/",
+    "shortName": "zksync-goerli",
+    "chainId": 280,
+    "networkId": 280,
+    "icon": "zksync-era",
+    "explorers": [
+      {
+        "name": "zkSync Era Block Explorer",
+        "url": "https://goerli.explorer.zksync.io",
+        "icon": "zksync-era",
+        "standard": "EIP3091"
+      }
+    ],
+    "parent": { "type": "L2", "chain": "eip155-1", "bridges": [{ "url": "https://bridge.zksync.io/" }] }
+  },
+  {
+    "name": "zkSync Mainnet",
+    "chain": "ETH",
+    "rpc": ["https://mainnet.era.zksync.io"],
+    "faucets": [],
+    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
+    "infoURL": "https://zksync.io/",
+    "shortName": "zksync",
+    "chainId": 324,
+    "networkId": 324,
+    "icon": "zksync-era",
+    "explorers": [
+      {
+        "name": "zkSync Era Block Explorer",
+        "url": "https://explorer.zksync.io",
+        "icon": "zksync-era",
+        "standard": "EIP3091"
+      }
+    ],
+    "parent": { "type": "L2", "chain": "eip155-1", "bridges": [{ "url": "https://bridge.zksync.io/" }] }
+  },
+  {
     "name": "Optimism Goerli Testnet",
     "chain": "ETH",
     "rpc": [
@@ -260,6 +303,23 @@
     "networkId": 1088,
     "explorers": [{ "name": "blockscout", "url": "https://andromeda-explorer.metis.io", "standard": "EIP3091" }],
     "parent": { "type": "L2", "chain": "eip155-1", "bridges": [{ "url": "https://bridge.metis.io" }] }
+  },
+  {
+    "name": "Polygon zkEVM",
+    "title": "Polygon zkEVM",
+    "chain": "Polygon",
+    "rpc": ["https://zkevm-rpc.com"],
+    "faucets": [],
+    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
+    "infoURL": "https://polygon.technology/polygon-zkevm",
+    "shortName": "zkevm",
+    "chainId": 1101,
+    "networkId": 1101,
+    "icon": "zkevm",
+    "explorers": [
+      { "name": "blockscout", "url": "https://zkevm.polygonscan.com", "icon": "zkevm", "standard": "EIP3091" }
+    ],
+    "parent": { "type": "L2", "chain": "eip155-1", "bridges": [{ "url": "https://bridge.zkevm-rpc.com" }] }
   },
   {
     "name": "Moonbeam",
@@ -439,6 +499,34 @@
     "explorers": [{ "name": "Alfajoresscan", "url": "https://alfajores.celoscan.io", "standard": "EIP3091" }]
   },
   {
+    "name": "Linea Testnet",
+    "title": "Linea Goerli Testnet",
+    "chain": "ETH",
+    "rpc": [
+      "https://rpc.goerli.linea.build",
+      "wss://rpc.goerli.linea.build",
+      "https://linea-goerli.infura.io/v3/${INFURA_API_KEY}",
+      "wss://linea-goerli.infura.io/ws/v3/${INFURA_API_KEY}"
+    ],
+    "faucets": ["https://faucetlink.to/goerli"],
+    "nativeCurrency": { "name": "Linea Ether", "symbol": "ETH", "decimals": 18 },
+    "infoURL": "https://linea.build",
+    "shortName": "linea-testnet",
+    "chainId": 59140,
+    "networkId": 59140,
+    "icon": "linea",
+    "parent": {
+      "type": "L2",
+      "chain": "eip155-5",
+      "bridges": [{ "url": "https://goerli.hop.exchange/#/send?token=ETH&sourceNetwork=ethereum&destNetwork=linea" }]
+    },
+    "explorers": [
+      { "name": "Etherscan", "url": "https://goerli.lineascan.build", "standard": "EIP3091", "icon": "linea" },
+      { "name": "Blockscout", "url": "https://explorer.goerli.linea.build", "standard": "EIP3091", "icon": "linea" }
+    ],
+    "status": "active"
+  },
+  {
     "name": "Linea",
     "title": "Linea Mainnet",
     "chain": "ETH",
@@ -525,6 +613,26 @@
     "parent": { "type": "L2", "chain": "eip155-5", "bridges": [{ "url": "https://bridge.arbitrum.io/" }] }
   },
   {
+    "name": "Arbitrum Sepolia",
+    "title": "Arbitrum Sepolia Rollup Testnet",
+    "chain": "ETH",
+    "rpc": ["https://sepolia-rollup.arbitrum.io/rpc"],
+    "faucets": [],
+    "nativeCurrency": { "name": "Sepolia Ether", "symbol": "ETH", "decimals": 18 },
+    "infoURL": "https://arbitrum.io",
+    "shortName": "arb-sep",
+    "chainId": 421614,
+    "networkId": 421614,
+    "explorers": [
+      {
+        "name": "Arbitrum Sepolia Rollup Testnet Explorer",
+        "url": "https://sepolia-explorer.arbitrum.io",
+        "standard": "EIP3091"
+      }
+    ],
+    "parent": { "type": "L2", "chain": "eip155-11155111", "bridges": [{ "url": "https://bridge.arbitrum.io" }] }
+  },
+  {
     "name": "Scroll Sepolia Testnet",
     "chain": "ETH",
     "status": "active",
@@ -541,10 +649,10 @@
     "chainId": 534351,
     "networkId": 534351,
     "explorers": [
-      { "name": "Scroll Sepolia Etherscan", "url": "https://sepolia.scrollscan.dev", "standard": "EIP3091" },
+      { "name": "Scroll Sepolia Etherscan", "url": "https://sepolia.scrollscan.com", "standard": "EIP3091" },
       { "name": "Scroll Sepolia Blockscout", "url": "https://sepolia-blockscout.scroll.io", "standard": "EIP3091" }
     ],
-    "parent": { "type": "L2", "chain": "eip155-11155111", "bridges": [{ "url": "https://scroll.io/bridge" }] }
+    "parent": { "type": "L2", "chain": "eip155-11155111", "bridges": [{ "url": "https://sepolia.scroll.io/bridge" }] }
   },
   {
     "name": "Scroll",
@@ -593,41 +701,6 @@
     "explorers": [
       { "name": "etherscan-sepolia", "url": "https://sepolia.etherscan.io", "standard": "EIP3091" },
       { "name": "otterscan-sepolia", "url": "https://sepolia.otterscan.io", "standard": "EIP3091" }
-    ]
-  },
-  {
-    "name": "Harmony Mainnet Shard 0",
-    "chain": "Harmony",
-    "rpc": [
-      "https://api.harmony.one",
-      "https://a.api.s0.t.hmny.io",
-      "https://api.s0.t.hmny.io",
-      "https://rpc.ankr.com/harmony",
-      "https://harmony.api.onfinality.io/public",
-      "https://1rpc.io/one"
-    ],
-    "faucets": [],
-    "nativeCurrency": { "name": "ONE", "symbol": "ONE", "decimals": 18 },
-    "infoURL": "https://www.harmony.one/",
-    "slip44": 1023,
-    "ens": { "registry": "0x4cd2563118e57b19179d8dc033f2b0c5b5d69ff5" },
-    "shortName": "hmy-s0",
-    "chainId": 1666600000,
-    "networkId": 1666600000,
-    "explorers": [{ "name": "Harmony Block Explorer", "url": "https://explorer.harmony.one", "standard": "EIP3091" }]
-  },
-  {
-    "name": "Harmony Testnet Shard 0",
-    "chain": "Harmony",
-    "rpc": ["https://api.s0.b.hmny.io"],
-    "faucets": ["https://faucet.pops.one"],
-    "nativeCurrency": { "name": "ONE", "symbol": "ONE", "decimals": 18 },
-    "infoURL": "https://www.harmony.one/",
-    "shortName": "hmy-b-s0",
-    "chainId": 1666700000,
-    "networkId": 1666700000,
-    "explorers": [
-      { "name": "Harmony Testnet Block Explorer", "url": "https://explorer.testnet.harmony.one", "standard": "EIP3091" }
     ]
   }
 ]

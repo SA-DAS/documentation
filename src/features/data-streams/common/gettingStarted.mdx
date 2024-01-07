@@ -19,32 +19,39 @@ Read data from a Data Stream and validate the answer on-chain. This example uses
   - The [Solidity](https://soliditylang.org/) programming language
   - The [MetaMask](https://metamask.io) wallet
   - The [Remix](https://remix.ethereum.org/) development environment
-- Acquire testnet funds. This guide requires a testnet ETH on _Arbitrum Goerli_.
-  - Use the [Arbitrum Bridge](https://bridge.arbitrum.io/) to transfer testnet ETH from Ethereum Goerli to Arbitrum Goerli. Testnet ETH is available at one of [several faucets](https://faucetlink.to/goerli).
-  - Testnet LINK is available for _Arbitrum Goerli_ at [faucets.chain.link](https://faucets.chain.link/arbitrum-goerli).
+- Acquire testnet funds. This guide requires a testnet ETH on _Arbitrum Sepolia_.
+  - Use the [Arbitrum Bridge](https://bridge.arbitrum.io/) to transfer testnet ETH from Ethereum Sepolia to Arbitrum Sepolia. Testnet ETH is available at one of [several faucets](https://faucetlink.to/sepolia).
+  - Testnet LINK is available for _Arbitrum Sepolia_ at [faucets.chain.link](https://faucets.chain.link/arbitrum-sepolia).
 - Learn how to [Fund your contract with LINK](/resources/fund-your-contract).
 
 ## Deploy the Chainlink Automation upkeep
 
-Deploy an upkeep that is enabled to retrieve data from Data Streams. For this example, you will read from the ETH/USD stream with ID `0x00023496426b520583ae20a66d80484e0fc18544866a5b0bfee15ec771963274` on Arbitrum Goerli. For a complete list of available assets, IDs, and verifier proxy addresses, see the [Stream Identifiers](/data-streams/stream-ids) page.
+Deploy an upkeep that is enabled to retrieve data from Data Streams. For this example, you will read from the ETH/USD stream with ID `0x00027bbaff688c906a3e20a34fe951715d1018d262a5b66e38eda027a674cd1b` on Arbitrum Sepolia. For a complete list of available assets, IDs, and verifier proxy addresses, see the [Stream Identifiers](/data-streams/stream-ids) page.
 
-1. Select the Arbitrum Goerli network in MetaMask.
+1. Select the Arbitrum Sepolia network in MetaMask.
 
 1. Open the example upkeep in Remix.
 
    <CodeSample src="samples/DataStreams/StreamsUpkeep.sol" showButtonOnly />
 
-1. Compile the contract.
+1. In the **Solidity Compiler** tab, select the `0.8.16` Solidity compiler and the `StreamsUpkeep` contract.
 
-1. In the **Deploy & Run** tab, select **Injected Provider** as your Environment. For this example, you should be using Arbitrum Goerli.
+1. Compile the contract. You can ignore the warning messages for this example.
 
-1. Deploy the contract. Record the contract address.
+1. In the **Deploy & Run** tab, select **Injected Provider** as your Environment. For this example, you should be using Arbitrum Sepolia.
+
+1. Deploy the contract with the following constructor variables:
+
+   - **FeeAddress (WETH)**: `0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3`
+   - **VerifierAddress**: `0x2ff010DEbC1297f19579B4246cad07bd24F2488A`
+
+1. Record the contract address.
 
 ## Deploy the emitter
 
 This contract emits logs that trigger the upkeep. This code can be part of your dApp. For example, you might emit log triggers when your users initiate a trade or other action that requires data retrieval. For this Getting Started guide, we will use a very simple emitter so you can test the upkeep and data retrieval.
 
-1. Select the Arbitrum Goerli network in MetaMask.
+1. Select the Arbitrum Sepolia network in MetaMask.
 
 1. Open the example emitter in Remix.
 
@@ -54,18 +61,13 @@ This contract emits logs that trigger the upkeep. This code can be part of your 
 
 1. In the **Deploy & Run** tab, select **Injected Provider** as your Environment.
 
-1. Deploy the contract with the following constructor variables:
-
-   - **FeeAddress (WETH)**: `0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3`
-   - **VerifierAddress**: `0xea9B98Be000FBEA7f6e88D08ebe70EbaAD10224c`
-
-1. Record the contract address.
+1. Deploy the contract. Record the contract address.
 
 ## Register the upkeep
 
 Register a new **Log Trigger** upkeep. See [Automation Log Triggers](/chainlink-automation/guides/log-trigger) to learn more about how to register Log Trigger upkeeps.
 
-1. Go to the [Chainlink Automation UI](https://automation.chain.link/arbitrum-goerli) for Arbitrum Goerli and connect your browser wallet.
+1. Go to the [Chainlink Automation UI](https://automation.chain.link/arbitrum-sepolia) for Arbitrum Sepolia and connect your browser wallet.
 
 1. Click **Register new Upkeep**.
 
@@ -81,40 +83,37 @@ Register a new **Log Trigger** upkeep. See [Automation Log Triggers](/chainlink-
 
 1. Leave the **Check data** value and other fields blank for now, and click **Register Upkeep**. MetaMask prompts you to confirm the transaction.
 
+## Fund the upkeep contract
+
+In this example, the upkeep contract pays for the verification. The Automation subscription does not cover that cost. Send LINK to your upkeep contract to pay for the verification costs.
+
+In MetaMask, send 1 testnet LINK to your contract address before you proceed to the next step and trigger the upkeep.
 ## Emit a log
 
 Now you can use your emitter contract to emit a log and initiate the upkeep, which retrieves data for the specified Data Streams asset ID.
 
-1. Go to [goerli.arbiscan.io](https://goerli.arbiscan.io/).
+1. Go to [sepolia.arbiscan.io](https://sepolia.arbiscan.io/).
 
-1. Use the search to find your emitter contract using the address you saved earlier.
+1. Under the **Deployed Contracts** list, click the **emitLog** button to run the function and emit a log. MetaMask prompts you to accept the transaction.
 
-1. Click the **Contract** tab to view the contract.
+After the transaction is complete, the log is emitted and the upkeep is triggered. You can find the upkeep transaction hash at [Chainlink Automation UI](https://automation.chain.link/arbitrum-sepolia). Check to make sure the transaction is successful.
 
-1. Click the **Write Contract** button to find the `emitLog` function.
+## View the retrieved price
 
-1. Click **Connect to Web3** to connect your wallet to Arbiscan. This allows you to run write functions in Arbiscan. MetaMask will prompt you to accept the connection.
+The retrieved price is stored as a variable in the contract and is also emitted in the logs.
 
-1. Click the `emitLog` function to expand the function details.
+1. In Remix, go to the **Deploy & Run** tab.
 
-1. Click the **Write** button to execute the function that will emit the log. MetaMask prompts you to accept the transaction.
+1. Under the **Deployed Contracts**, find the deployed upkeep contract and view the variables.
 
-After the transaction is complete, the log is emitted and the upkeep is triggered. You can see the retrieved data on your upkeep.
+1. Click the `last_retrieved_price` variable to view the retrieved price.
 
-## View the upkeep
-
-View the upkeep and check the on-chain verification.
-
-1. Go to the [Chainlink Automation UI](https://automation.chain.link/arbitrum-goerli) for Arbitrum Goerli.
-
-1. On your list of upkeeps, click the upkeep that you crated for this guide. The upkeep details open with a list of upkeeps that were performed. You should see your log triggered upkeep on this list.
-
-1. Click the transaction hash for the upkeep to view the transaction in Arbiscan.
-
-1. On the **Logs** tab for your transaction, you will see that the `performUpkeep` function emitted the price from the verified report.
+Alternatively, you can view the price emitted in the logs for your upkeep transaction. You can find the upkeep transaction hash at [Chainlink Automation UI](https://automation.chain.link/arbitrum-sepolia) and view the logs in the explorer.
 
 ## Examine the code
 
 The example code that you deployed has all of the interfaces and functions required to work with Chainlink Automation as an upkeep contract. It follows a similar flow to the trading flow in the [Architecture](/data-streams#example-trading-flow) documentation, but uses a basic log emitter to simulate the client contract that would initiate a `StreamsLookup`. After the contract receives and verifies the report, `performUpkeep` emits a `PriceUpdate` log message with the price. You could modify this to use the data in a way that works for your specific use case and application.
+
+The code example uses `revert` with `StreamsLookup` to convey call information about what streams to retrieve. See the [eip-3668 rationale](https://eips.ethereum.org/EIPS/eip-3668#rationale) for more information on the use of `revert` in this way.
 
 <CodeSample src="samples/DataStreams/StreamsUpkeep.sol" />

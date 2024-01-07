@@ -542,6 +542,10 @@ export const SIDEBAR: Partial<Record<Sections, SectionEntry[]>> = {
           title: "Automate your Functions (Custom Logic Automation)",
           url: "chainlink-functions/tutorials/automate-functions-custom-logic",
         },
+        {
+          title: "Using Imports with Functions",
+          url: "chainlink-functions/tutorials/importing-packages",
+        },
       ],
     },
     {
@@ -821,6 +825,20 @@ export const SIDEBAR: Partial<Record<Sections, SectionEntry[]>> = {
         {
           title: "Supported Networks",
           url: "ccip/supported-networks",
+          children: [
+            {
+              title: "Mainnet v1.0.0",
+              url: "ccip/supported-networks/v1_0_0/mainnet",
+            },
+            {
+              title: "Testnet v1.2.0",
+              url: "ccip/supported-networks/v1_2_0/testnet",
+            },
+            {
+              title: "Testnet v1.0.0 (Deprecated)",
+              url: "ccip/supported-networks/v1_0_0/testnet",
+            },
+          ],
         },
         {
           title: "Billing",
