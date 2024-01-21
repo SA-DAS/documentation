@@ -17,12 +17,12 @@ export const chainToProvider: Record<SupportedChain, () => providers.Provider> =
   FANTOM_MAINNET: () => new providers.JsonRpcProvider("https://rpc.ankr.com/fantom"),
   FANTOM_TESTNET: () => new providers.JsonRpcProvider("https://rpc.ankr.com/fantom_testnet"),
   ARBITRUM_MAINNET: () => new providers.JsonRpcProvider("https://rpc.ankr.com/arbitrum"),
+  ARBITRUM_SEPOLIA: () => new providers.JsonRpcProvider("https://sepolia-rollup.arbitrum.io/rpc"),
   ARBITRUM_GOERLI: () =>
     new providers.JsonRpcProvider("https://arb-goerli.g.alchemy.com/v2/AwZE27jvfRidiu-6FFunBzP3Bff0XFNx"),
   OPTIMISM_MAINNET: () => new providers.JsonRpcProvider("https://rpc.ankr.com/optimism"),
   OPTIMISM_GOERLI: () =>
     new providers.JsonRpcProvider("https://opt-goerli.g.alchemy.com/v2/5lHtpzqF7gxVKsSfpyoUbisei8OwoIRS"),
-  HARMONY_MAINNET: () => new providers.JsonRpcProvider("https://rpc.ankr.com/harmony"),
   MOONRIVER_MAINNET: () => new providers.JsonRpcProvider("https://rpc.api.moonriver.moonbeam.network"),
   MOONBEAM_MAINNET: () => new providers.JsonRpcProvider("https://rpc.ankr.com/moonbeam"),
   METIS_MAINNET: () => new providers.JsonRpcProvider("https://andromeda.metis.io/?owner=1088"),
@@ -32,6 +32,10 @@ export const chainToProvider: Record<SupportedChain, () => providers.Provider> =
   SCROLL_SEPOLIA: () => new providers.JsonRpcProvider("https://sepolia-rpc.scroll.io"),
   CELO_MAINNET: () => new providers.JsonRpcProvider("https://alfajores-forno.celo-testnet.org"),
   CELO_ALFAJORES: () => new providers.JsonRpcProvider("https://forno.celo.org"),
-  LINEA_MAINNET: () => new providers.JsonRpcProvider("https://rpc.linea.build	"),
-  LINEA_GOERLI_TESTNET: () => new providers.JsonRpcProvider("https://rpc.goerli.linea.build"),
+  LINEA_MAINNET: () => new providers.JsonRpcProvider("https://rpc.linea.build"),
+  LINEA_GOERLI: () => new providers.JsonRpcProvider("https://rpc.goerli.linea.build"),
+  POLYGON_ZKEVM_MAINNET: () => new providers.JsonRpcProvider("https://zkevm-rpc.com"),
+  POLYGON_ZKEVM_TESTNET: () => new providers.JsonRpcProvider("https://rpc.public.zkevm-test.net"),
+  ZKSYNC_MAINNET: () => new providers.JsonRpcProvider("https://testnet.era.zksync.dev"),
+  ZKSYNC_GOERLI: () => new providers.JsonRpcProvider("https://mainnet.era.zksync.io"),
 }

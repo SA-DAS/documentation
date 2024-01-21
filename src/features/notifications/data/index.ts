@@ -1,9 +1,9 @@
 import { BannerContent } from "../components/HeaderBanner"
 
 export const NotificationData: BannerContent = {
-  description: "The Constellation Hackathon is on:",
+  description: "Chainlink Data Streams have officially launched on mainnet.",
   type: "info",
-  linkText: "Compete for $500K+ in prizes.",
+  linkText: "Sign up for early access.",
   linkUrl:
-    "https://chain.link/hackathon/?utm_medium=referral&utm_source=chainlink-docs&utm_campaign=constellation-hackathon",
+    "https://chainlinkcommunity.typeform.com/datastreams?utm_medium=referral&utm_source=chainlink-docs&ref_id=docs",
 }

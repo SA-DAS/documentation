@@ -7,12 +7,12 @@ export type SupportedTechnology =
   | "FANTOM"
   | "ARBITRUM"
   | "OPTIMISM"
-  | "HARMONY"
   | "MOONRIVER"
   | "MOONBEAM"
   | "METIS"
   | "BASE"
   | "CELO"
+  | "POLYGON_ZKEVM"
   | "LINEA"
   | "SCROLL"
 
@@ -30,10 +30,10 @@ export type SupportedChain =
   | "FANTOM_MAINNET"
   | "FANTOM_TESTNET"
   | "ARBITRUM_MAINNET"
+  | "ARBITRUM_SEPOLIA"
   | "ARBITRUM_GOERLI"
   | "OPTIMISM_MAINNET"
   | "OPTIMISM_GOERLI"
-  | "HARMONY_MAINNET"
   | "MOONRIVER_MAINNET"
   | "MOONBEAM_MAINNET"
   | "METIS_MAINNET"
@@ -44,12 +44,17 @@ export type SupportedChain =
   | "SCROLL_MAINNET"
   | "SCROLL_SEPOLIA"
   | "LINEA_MAINNET"
-  | "LINEA_GOERLI_TESTNET"
+  | "LINEA_GOERLI"
+  | "ZKSYNC_MAINNET"
+  | "ZKSYNC_GOERLI"
+  | "POLYGON_ZKEVM_MAINNET"
+  | "POLYGON_ZKEVM_TESTNET"
 
 export type Chains = Record<
   SupportedTechnology,
   {
     title: string
+    icon: string
     chains: Partial<
       Record<
         SupportedChain,
@@ -57,6 +62,11 @@ export type Chains = Record<
           chainId: number
           title: string
           explorer: string
+          nativeCurrency: {
+            name: string
+            symbol: string
+            decimals: number
+          }
         }
       >
     >

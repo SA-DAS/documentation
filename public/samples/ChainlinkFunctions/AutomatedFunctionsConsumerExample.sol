@@ -7,6 +7,7 @@ import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/Confir
 /**
  * @title Functions contract used for Automation.
  * @notice This contract is a demonstration of using Functions and Automation.
+ * @notice You may need to add a Forwarder for additional security.
  * @notice NOT FOR PRODUCTION USE
  */
 contract AutomatedFunctionsConsumerExample is FunctionsClient, ConfirmedOwner {
@@ -49,7 +50,7 @@ contract AutomatedFunctionsConsumerExample is FunctionsClient, ConfirmedOwner {
 
     /// @notice Update the request settings
     /// @dev Only callable by the owner of the contract
-    /// @param _request The new encoded CBOR request to be set. The request is encoded off-chain
+    /// @param _request The new encoded CBOR request to be set. The request is encoded offchain
     /// @param _subscriptionId The new subscription ID to be set
     /// @param _gasLimit The new gas limit to be set
     /// @param _donID The new job ID to be set
